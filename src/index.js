@@ -4,14 +4,13 @@ import graphqlHTTP from "express-graphql"; //middleware of express to process th
 import * as _package from "../package.json";
 import schema from "./schema";
 import { connect } from "./database";
-
-const app = express();
-
-connect();
+connect(); //mongoDB
 
 const {
   env: { PORT }
 } = process;
+
+const app = express();
 
 app.get("/", (req, res) => {
   res.json({

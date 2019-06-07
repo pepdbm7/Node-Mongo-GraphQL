@@ -10,9 +10,8 @@ type Query {
 
 type User {
   _id: ID
-  firstname: String!
-  lastname: String!
-  products: [Product]
+  name: String!
+  age: Int
 }
 
 type Product {
@@ -21,7 +20,7 @@ type Product {
   name: String!
   price: Int!
   image: String
-  description: String!¡
+  description: String!
 }
 
 type Mutation {
@@ -40,8 +39,8 @@ input ProductInput {
 }
 
 input UserInput {
-  firstname: String!
-  lastname: String!
+  name: String!
+  age: Int
 }
 `;
 

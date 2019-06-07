@@ -1,5 +1,5 @@
 import User from "./models/User";
-import Product from "./models/Products";
+import { products } from "./data";
 
 export const resolvers = {
   Query: {
@@ -7,14 +7,14 @@ export const resolvers = {
       console.log(ctx);
       await `Hello ${name}`;
     },
-    products: async () => await Product.find(),
+    products: () => products, //imported from data we've created as an example list
     users: async () => await User.find()
   },
 
   Mutation: {
-    createTask: async (_, { input }) => {
-      input._id = tasks.length;
-      await tasks.push(input);
+    createProduct: async (_, { input }) => {
+      input._id = products.length;
+      await products.push(input);
       return input;
     },
     createUser: async (_, { input }) => {
@@ -23,6 +23,7 @@ export const resolvers = {
       return newUser;
     },
     updateUser: async (_, { _id, input }) => {
+      //we need the id of the item, and an object with the keys we want to change, and their new values!
       await User.findByIdAndUpdate(_id, input, { new: true }); //{new: true} to get the user after being updated
     },
     deleteUser: async (_, { _id }) => {

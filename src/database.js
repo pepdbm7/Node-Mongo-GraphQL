@@ -7,7 +7,7 @@ const {
 export const connect = async () => {
   try {
     await mongoose.connect(MONGO_URL, {
-      //or however we want to name our DB
+      //if the DB we define in MONGO_URL doesn't exist, mongo will create it for us
       useNewUrlParser: true
     });
     console.log(`db server running at ${MONGO_URL}`);
